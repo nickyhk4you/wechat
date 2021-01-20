@@ -249,6 +249,12 @@ module.exports = class Analytics {
             analyticsVars.set("aid", analyticsId);
         }
 
+        let mid = wx.getStorageSync('wechatopenid');
+        if(mid){
+            LOG.debug('Analytics - set openid = ', mid);
+            analyticsVars.set("mid", mid);
+        }
+
         analyticsVars.set("ce", "UTF-8");
 
         analyticsVars.set("t", this._getTimestampTzOffset());
